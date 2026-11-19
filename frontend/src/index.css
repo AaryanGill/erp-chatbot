@@ -1,0 +1,109 @@
+/* =====================================================================
+   Design tokens: one calm accent, neutral surfaces, soft glass.
+   Change a colour here and the whole app follows.
+   ===================================================================== */
+:root {
+  --font: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+  /* page background */
+  --bg-base: #eceff4;
+  --glow-1: rgba(70, 85, 209, 0.24);
+  --glow-2: rgba(95, 150, 190, 0.26);
+  --glow-3: rgba(150, 120, 200, 0.14);
+
+  /* glass surfaces */
+  --glass: rgba(255, 255, 255, 0.52);
+  --glass-strong: rgba(255, 255, 255, 0.80);
+  --glass-border: rgba(255, 255, 255, 0.80);
+  --line: rgba(28, 34, 51, 0.08);
+  --shadow: 0 12px 36px rgba(31, 38, 64, 0.09), 0 1px 2px rgba(31, 38, 64, 0.05);
+
+  /* text */
+  --text: #1b2133;
+  --text-2: #586177;
+  --text-3: #8a92a6;
+
+  /* the single accent colour */
+  --accent: #4655d1;
+  --accent-hover: #3a48b8;
+  --accent-soft: rgba(70, 85, 209, 0.10);
+  --accent-text: #3846b8;
+  --on-accent: #ffffff;
+
+  /* status tones (used sparingly, only for badges) */
+  --ok: #17785a;       --ok-bg: rgba(23, 120, 90, 0.12);
+  --warn: #94590a;     --warn-bg: rgba(210, 140, 20, 0.15);
+  --bad: #b3281c;      --bad-bg: rgba(217, 45, 32, 0.10);
+  --neutral: #566075;  --neutral-bg: rgba(86, 96, 117, 0.11);
+
+  --radius: 20px;
+  --radius-sm: 12px;
+  color-scheme: light;
+}
+
+[data-theme='dark'] {
+  --bg-base: #0e111b;
+  --glow-1: rgba(84, 100, 230, 0.26);
+  --glow-2: rgba(60, 110, 160, 0.22);
+  --glow-3: rgba(140, 100, 200, 0.14);
+
+  --glass: rgba(28, 33, 50, 0.55);
+  --glass-strong: rgba(36, 42, 62, 0.82);
+  --glass-border: rgba(255, 255, 255, 0.09);
+  --line: rgba(255, 255, 255, 0.08);
+  --shadow: 0 12px 36px rgba(0, 0, 0, 0.35), 0 1px 2px rgba(0, 0, 0, 0.3);
+
+  --text: #e9ecf6;
+  --text-2: #a4acc2;
+  --text-3: #727a91;
+
+  --accent: #7482f0;
+  --accent-hover: #8a96f5;
+  --accent-soft: rgba(116, 130, 240, 0.16);
+  --accent-text: #a3adf8;
+  --on-accent: #0e111b;
+
+  --ok: #5fd1a7;       --ok-bg: rgba(95, 209, 167, 0.14);
+  --warn: #f0bd62;     --warn-bg: rgba(240, 189, 98, 0.14);
+  --bad: #ff8f84;      --bad-bg: rgba(255, 143, 132, 0.13);
+  --neutral: #a4acc2;  --neutral-bg: rgba(164, 172, 194, 0.13);
+  color-scheme: dark;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body, #root { height: 100%; }
+
+body {
+  font-family: var(--font);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text);
+  background-color: var(--bg-base);
+  background-image:
+    radial-gradient(900px 520px at 8% -8%, var(--glow-1), transparent 62%),
+    radial-gradient(800px 480px at 100% 4%, var(--glow-2), transparent 60%),
+    radial-gradient(900px 560px at 55% 112%, var(--glow-3), transparent 62%);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+}
+
+button { font-family: inherit; font-size: inherit; color: inherit; cursor: pointer; border: none; background: none; }
+input { font-family: inherit; font-size: inherit; color: inherit; }
+
+/* The glass surface, reused everywhere */
+.glass {
+  background: var(--glass);
+  -webkit-backdrop-filter: blur(22px) saturate(150%);
+  backdrop-filter: blur(22px) saturate(150%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+}
+
+/* thin, quiet scrollbars */
+* { scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: var(--line); border-radius: 8px; }
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
