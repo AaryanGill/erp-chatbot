@@ -11,7 +11,10 @@ def _database_url():
     )
     # Some hosting services still use the old "postgres://" spelling
     if url.startswith("postgres://"):
-        url = url.replace("postgres://", "postgresql://", 1)
+        url = "postgresql://" + url[len("postgres://"):]
+    # Newer SQLAlchemy versions default to a different driver; name the one we installed
+    if url.startswith("postgresql://"):
+        url = "postgresql+psycopg2://" + url[len("postgresql://"):]
     return url
 
 
